@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montaż paneli podłogowych</title>
+    <link rel="icon" href="icon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="header.png" alt="Montaż paneli" class="header">
+        <div class="header-overlay">
+            <h1 class="header-title">Montaż paneli podłogowych</h1>
+        </div>
+    </header>
+
+    <nav class="navigacja">
+        <a class="nav-link" href="panele.html">Strona Główna</a>
+        <a class="nav-link" href="oferty.html">Zobacz ofertę</a>
+        <a class="nav-link" href="koszt.html">Oblicz koszt</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+    </nav>
+
+    <main class="main-content">
+        <h2 class="main-title">Kalkulator kosztów</h2>
+        <p class="main-p">Policz, porównaj, wybierz</p>
+        <div class="calcul-conteiner">
+            <div class="wymiary">
+                <div class="opcja-szer">
+                    <label for="szerokosc">Szerokość pomieszczenia [m]</label>
+                    <input type="number" id="szerokosc" placeholder="np. 4.5">
+                </div>
+                <div class="opcja-dlug">
+                    <label for="dlugosc">Długość pomieszczenia [m]</label>
+                    <input type="number" id="dlugosc" placeholder="np. 6.7">
+                </div>
+            </div>
+            <div class="typ-conteiner">
+                <p class="typ-title">Typ paneli</p>
+                <ul>
+                    <li>
+                        <label for="laminowane">
+                            <input type="radio" id="laminowane" name="panel">
+                            Panele laminowane
+                        </label>
+                    </li>
+
+                    <li>
+                        <label for="winylowe">
+                            <input type="radio" id="winylowe" name="panel">
+                            Panele winylowe
+                        </label>
+                    </li>
+
+                    <li>
+                        <label for="deska">
+                            <input type="radio" id="deska" name="panel">
+                            Deska podłogowa
+                        </label>
+                    </li>
+                </ul>
+                <button type="button" id="result" onclick="result()">Oblicz</button>
+                <p id="wynik"></p>
+            </div>
+        </div>
+
+        <div class="nextstrona">
+            <p class="koszt-p">Chcesz zobaczyć oferty?</p>
+            <button class="nextstr-button" onclick="window.open('oferty.html', '_blank')">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M19 12H5M12 19l-7-7 7-7" />
+                </svg>
+                Zobacz oferty
+            </button>
+        </div>
+    </main>
+    <footer class="footer">
+        <p>&copy; 2026 Montaż paneli podłogowych - Portfolio by Jojka</p>
+    </footer>
+
+    <script>
+        function result() {
+
+            let szerokosc = parseFloat(document.getElementById("szerokosc").value);
+            let dlugosc = parseFloat(document.getElementById("dlugosc").value);
+
+            let cena = 0;
+            if (document.getElementById("laminowane").checked) cena = 12;
+            else if (document.getElementById("winylowe").checked) cena = 14;
+            else if (document.getElementById("deska").checked) cena = 18;
+
+            let wynik = document.getElementById("wynik");
+
+            if (!isNaN(szerokosc) && !isNaN(dlugosc) && szerokosc > 0 && dlugosc > 0 && cena > 0) {
+                let pole = szerokosc * dlugosc;
+                let koszt = pole * cena;
+
+                wynik.innerHTML = `Powierzchnia: <strong>${pole.toFixed(2)} m²</strong><br>Koszt montażu: <strong>${koszt.toFixed(2)} zł</strong>`;
+                wynik.style.color = "#3E2723";
+            } else {
+                wynik.innerHTML = "Wpisz poprawne wymiary i wybierz typ paneli.";
+                wynik.style.color = "#D32F2F";
+            }
+
+        }
+    </script>
+</body>
+
+</html>

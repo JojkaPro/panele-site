@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Montaż paneli podłogowych</title>
+    <link rel="icon" href="icon.jpg" type="image/jpeg">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <header>
+        <img src="header.png" alt="Montaż paneli" class="header">
+        <div class="header-overlay">
+            <h1 class="header-title">Montaż paneli podłogowych</h1>
+        </div>
+    </header>
+
+    <nav class="navigacja">
+        <a class="nav-link" href="panele.html">Strona Główna</a>
+        <a class="nav-link" href="oferty.html">Zobacz ofertę</a>
+        <a class="nav-link" href="koszt.html">Oblicz koszt</a>
+        <a class="nav-link" href="kontakt.html">Kontakt</a>
+    </nav>
+
+    <main class="main-content">
+        <h2 class="main-title">Wybierz panele podłogowe</h2>
+
+        <div class="panele-conteiner" id="paneleContainer">
+            <!--Pierwsza panel -->
+            <div class="panele-card" data-panel="laminowane" onclick="wybierzPanel(this)">
+                <div class="image-wrapper">
+                    <img src="laminowane.png" alt="Panele laminowane" class="panele-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Panele laminowane</h3>
+                    <p class="card-opis">Ekonomiczne i trwałe rozwiązanie do każdego wnętrza. Szeroki wybór dekorów
+                        drewna</p>
+                    <span class="button">Wybierz</span>
+                </div>
+            </div>
+            <!--Druga panel -->
+            <div class="panele-card" data-panel="wynilowe" onclick="wybierzPanel(this)">
+                <div class="image-wrapper">
+                    <img src="wynilowe.png" alt="Panele winylowe" class="panele-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Panele winylowe</h3>
+                    <p class="card-opis">Odporne na wilgoć i łatwe w utrzymaniu. Idealne do kuchni i łazienek</p>
+                    <span class="button">Wybierz</span>
+                </div>
+            </div>
+            <!--Trzeci panel -->
+            <div class="panele-card" data-panel="podłogowa" onclick="wybierzPanel(this)">
+                <div class="image-wrapper">
+                    <img src="podologa.png" alt="Deska podłogowa" class="panele-image">
+                    <div class="image-overlay"></div>
+                </div>
+                <div class="card-body">
+                    <h3 class="card-title">Deska podlogowa</h3>
+                    <p class="card-opis">Naturalne piękno drewna. Klasyczny wybór dla wymagających klientów</p>
+                    <span class="button">Wybierz</span>
+                </div>
+            </div>
+        </div>
+
+        <!--Strona ofert-->
+        <div class="nextstrona">
+            <button class="nextstr-button" onclick="window.open('oferty.html', '_blank')"> Zobacz nasze oferty
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                </svg>
+            </button>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2026 Montaż paneli podłogowych - Portfolio by Jojka</p>
+    </footer>
+
+
+    <script>
+        function wybierzPanel(card) {
+            document.querySelectorAll('.panele-card').forEach(c => {
+                c.classList.remove('selected');
+                c.querySelector('.button').textContent = 'Wybierz';
+            });
+            card.classList.add('selected');
+            card.querySelector('.button').textContent = '✓ Wybrano';
+        }
+
+    </script>
+</body>
+
+</html>
